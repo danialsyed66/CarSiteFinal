@@ -29,7 +29,8 @@ body {
   display: block;
 }
 #tab-items li a:hover{
-  color: white;
+  color: red;
+  text-decoration: underline;
 }
 #info{
   margin-left: 10px;
@@ -45,6 +46,7 @@ body {
 #info-items li{
   list-style-type: none;
   text-align: center;
+  color: white;
 }
 #register{
   display: flex;
@@ -58,13 +60,16 @@ body {
 #register li{
   display: inline;
   text-align: justify;
+}#register li a{
+  color: white;
 }
 #register li a:hover{
-  color: white;
+  color: black;
 }
 #register li.signin{
   text-align: left;
   font-size: medium;
+  color: white;
 }
 #register li.signup{
   text-align: right;
@@ -101,7 +106,8 @@ body {
 }
 .flex-container2 h1{
   font-size: 7em;
-  color: darkblue;
+  /* color: darkblue; */
+  color: rgb(255, 0, 0);
   padding: 1em;
   background-size: cover;
   background-position: center;
