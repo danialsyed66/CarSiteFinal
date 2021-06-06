@@ -1,0 +1,203 @@
+body {
+  width: auto;
+}
+
+.flex-container{
+  /* background-color: #2b6777; */
+  background-color: #000000;
+}
+.flex-container>div{
+  /* margin: 10px; */
+  padding: 20px;
+  font-size: 30px;
+}
+#tab-items{
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#tab-items li{
+  text-align: justify;
+  display: inline-flex;
+}
+#tab-items li a{
+  font-style: normal;
+  color: black;
+  text-decoration: none;
+  padding: 15px 10px;
+  display: block;
+}
+#tab-items li a:hover{
+  color: white;
+}
+#info{
+  margin-left: 10px;
+  padding: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 17px;
+  justify-content: center;
+  background-color: rgb(255, 0, 0);
+  /* background-color: #52ab98; */
+  border-radius: 5px;
+}
+#info-items li{
+  list-style-type: none;
+  text-align: center;
+}
+#register{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-right: 50px;
+  margin-left: 0px;
+  padding: 0;
+  text-align: center;
+}
+#register li{
+  display: inline;
+  text-align: justify;
+}
+#register li a:hover{
+  color: white;
+}
+#register li.signin{
+  text-align: left;
+  font-size: medium;
+}
+#register li.signup{
+  text-align: right;
+  font-size: medium;
+}
+#logo{
+  margin: 7px;
+  text-align: center;
+  text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
+  /* color: rgb(0, 17, 255); */
+  color: rgb(255, 0, 0);
+  font: 800 70px 'Bitter';
+  font-size: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+#logo span{
+  color: rgb(255, 255, 255);
+}
+#tabs{
+  /* background-color: rgb(91, 127, 160); */
+  /* border: rgb(0, 217, 255); */
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+.flex-container2{
+  height: 60rem;
+  min-width: 1rem;
+  background-size: cover;
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-image: url("../images/background.jpg");
+  overflow-x: auto;
+}
+.flex-container2 h1{
+  font-size: 7em;
+  color: darkblue;
+  padding: 1em;
+  background-size: cover;
+  background-position: center;
+}
+.f3 h1{
+  font-size: 4em;
+}
+@media(max-width: 600px){
+  .flex-container2 h1{
+      font-size: 3em;
+      padding: .3em;
+  }
+}
+.manager img{
+  width: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.manager p.head{
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  padding: 10px;
+}
+.manager p{
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#testimonials {
+  background: url(../images/jeremy-bishop-QHZn3-0bbEM-unsplash.jpg) no-repeat 0
+    0;
+  background-size: cover;
+  padding: 50px 0;
+  position: relative;
+}
+#testimonials:before {
+  /* background: rgb(151, 182, 201); */
+  background: gray;
+  content: "";
+  position: absolute;
+  top: 0rem;
+  width: 100%;
+  height: 100%;
+}
+.testimonials img {
+  border-radius: 50%;
+}
+.auther {
+  font-size: 1rem;
+}
+#farhan {
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+#footer-sidebar {
+  background: #2b6777;
+  padding: 20px 0;
+}
+#footer {
+  color: white;
+  background: black;
+  margin: 0;
+  padding: 10px;
+}
+#social-icons li {
+  display: inline-block;
+  padding-left: 5px;
+}
+#social-icons li a {
+  font-size: 23px;
+}
+
+.section h2.section-hd {
+  color: black;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+.section h2.section-hd::after {
+  background: #2d3436;
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  margin: 20px auto;
+}

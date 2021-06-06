@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  div(class="flex-container2 f3 col-md-12")
+    h1 List of Cars
+    div
+      table.container.table.table-dark.table-striped.m-b-5
+        thead
+          tr.text-center
+            th #
+            th Name
+            th Price
+        tbody
+          each service, index in services
+            tr.text-center
+              td=index+1
+              td=service.name
+              td=service.price
