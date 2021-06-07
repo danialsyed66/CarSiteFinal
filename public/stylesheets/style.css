@@ -33,7 +33,7 @@ body {
   text-decoration: underline;
 }
 #info{
-  margin-left: 10px;
+  margin: 10px;
   padding: 0;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -92,6 +92,7 @@ body {
 #tabs{
   /* background-color: rgb(91, 127, 160); */
   /* border: rgb(0, 217, 255); */
+  margin: 10px;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
 }
