@@ -1,1 +1,1 @@
-<?php include_once("./app.js")?>
+<?php include_once("./bin/www")?>
