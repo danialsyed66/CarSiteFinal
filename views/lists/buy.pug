@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  div(class="flex-container2 f3 col-md-12")
+    h1 List of Cars
+    div
+      table.container.table.table-dark.table-striped.m-b-5
+          thead
+            tr.text-center
+              th #
+              th Name
+              th Model
+              th Used
+              th Price
+          tbody#cars.body
+              
+    h1 List of Spare Parts
+    div
+      table.container.table.table-dark.table-striped.m-b-5
+        thead
+          tr.text-center
+            th #
+            th Name
+            th Company
+            th Model
+            th Price
+        tbody.spareparts.body
