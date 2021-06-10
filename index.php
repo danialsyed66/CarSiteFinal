@@ -1,1 +1,0 @@
-<script> "start": "nodemon ./bin/www" </script>
