@@ -1,1 +1,1 @@
-<?php include_once("./bin/www")?>
+<script> "start": "nodemon ./bin/www" </script>
