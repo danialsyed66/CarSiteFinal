@@ -1,19 +1,31 @@
-extends ../layout
+<div class="modal fade" id="sellModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title font-weight-bold">Enter Car Details</h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <label for="addCar" class="font-weight-bold">Name</label>
+                <input type="text" class="form-control" name="addCar" id="addCarName" placeholder="Name of the car">
+                <small id="nameHelpId" class="form-text text-muted text">Name should have minimum 3 and maximum 20 characters</small>
 
-block content
-  div(class="flex-container2 f3 col-md-12")
-    h1 Enter Car Details
-      <div class="form-group">
-          <label for="addCar">Name</label>
-          <input type="text" class="form-control bg-dark text-light" name="addCar" id="addName" placeholder="Name of the car">
-          <small id="nameHelpId" class="form-text text-muted text">Name should have minimum 3 and maximum 20 characters</small>
+                <label for="addCar" class="font-weight-bold">Model</label>
+                <input type="number" class="form-control" name="addCar" id="addCarModel" placeholder="Model of the car">
+                <small id="modelHelpId" class="form-text text-muted">Model should be between 1700 - 3000</small>
 
-          <label for="addCar">Model</label>
-          <input type="number" class="form-control bg-dark text-light" name="addCar" id="addModel" placeholder="Model of the car">
-          <small id="modelHelpId" class="form-text text-muted">Model should be between 1700 - 3000</small>
+                <label for="addCar" class="font-weight-bold">Price</label>
+                <input type="number" class="form-control" name="Price" id="addCarPrice" placeholder="Price of the car">
+                <small id="priceHelpId" class="form-text text-muted">Price should be more than 0</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="addCarSave" class="btn btn-primary" data-dismiss="modal">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-          <label for="addCar">Price</label>
-          <input type="number" class="form-control bg-dark text-light" name="Price" id="addPrice" placeholder="Price of the car">
-          <small id="priceHelpId" class="form-text text-muted">Price should be more than 0</small>
-      </div>
-      <button type="button" id="addSave" class="btn btn-danger">Add</button>
+
