@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var config = require("config");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -14,13 +15,12 @@ var repairRouter = require("./routes/repair");
 var carsApiRouter = require("./routes/api/cars");
 var sparepartsApiRouter = require("./routes/api/spareparts");
 var servicesApiRouter = require("./routes/api/services");
+// const { config } = require("process");
 
 var app = express();
 
-// const DB = "mongodb+srv://danialsyed66:danialsyed@cluster0.pit0y.mongodb.net/CarSite?retryWrites=true&w=majority"
 // const DB = "mongodb://localhost/CarSite"
-const DB =
-  "mongodb+srv://danialsyed66:danialsyed@cluster0.zsvyw.mongodb.net/CarSite?retryWrites=true&w=majority";
+// const DB = "mongodb+srv://danialsyed66:danialsyed@cluster0.zsvyw.mongodb.net/CarSite?retryWrites=true&w=majority";
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -59,7 +59,7 @@ app.use(function (err, req, res, next) {
 });
 
 mongoose
-  .connect(DB, {
+  .connect(config.get("db"), {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

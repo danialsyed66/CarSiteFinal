@@ -35,10 +35,10 @@ function loadCars() {
 }
 
 function addCar() {
-  var name = $("#addName").val();
-  var model = $("#addModel").val();
+  var name = $("#addCarName").val();
+  var model = $("#addCarModel").val();
   var used = true;
-  var price = $("#addPrice").val();
+  var price = $("#addCarPrice").val();
   $.ajax({
     url: "/api/cars",
     data: { name, model, used, price },
