@@ -7,11 +7,11 @@ var mongoose = require("mongoose");
 var config = require("config");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
 var buyRouter = require("./routes/buy");
 var sellRouter = require("./routes/sell");
 var servicesRouter = require("./routes/services");
 var repairRouter = require("./routes/repair");
+var usersRouter = require("./routes/api/users");
 var carsApiRouter = require("./routes/api/cars");
 var sparepartsApiRouter = require("./routes/api/spareparts");
 var servicesApiRouter = require("./routes/api/services");
@@ -33,11 +33,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use("/buy", buyRouter);
 app.use("/sell", sellRouter);
 app.use("/services", servicesRouter);
 app.use("/repair", repairRouter);
+app.use("/api/users", usersRouter);
 app.use("/api/cars", carsApiRouter);
 app.use("/api/spareparts", sparepartsApiRouter);
 app.use("/api/services", servicesApiRouter);
