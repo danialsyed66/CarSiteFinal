@@ -20,6 +20,8 @@ html
     script(src='/javascripts/script.js')
  
   body
+    include ./lists/sell
+    
     <div class="flex-container">
         <div class="row">
             <div id="logo" class="col-lg-3">Car<span>Site</span></div>
@@ -29,7 +31,7 @@ html
                     <li><a href="/about">About</a></li>
                     <li><a href="/services">Services</a></li>
                     <li><a href="/buy">Buy</a></li>
-                    <li><a href="/sell">Sell</a></li>
+                    <li><a type="button" data-toggle="modal" data-target="#sellModal">Sell</a></li>
                     <li><a href="/repair">Repair</a></li>
                     <li><a href="/">Rent</a></li>
                 </ul>
