@@ -3,7 +3,7 @@ $(function () {
   loadSpareparts();
   loadServices();
   $(".body").on("click", ".btn-danger", handleDelete);
-  $("#addSave").click(addCar);
+  $("#addCarSave").click(addCar);
 });
 
 function loadCars() {
@@ -48,7 +48,7 @@ function addCar() {
       cars.html("An error occoured in add new product");
     },
     success: function () {
-      window.open("/buy");
+      window.location.replace("/buy");
     },
   });
 }
