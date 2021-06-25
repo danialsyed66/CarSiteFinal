@@ -1,0 +1,27 @@
+<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title font-weight-bold">Sign In</h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <label for="Email" class="font-weight-bold">Email</label>
+                <input type="text" class="form-control" name="Email" id="signInEmail" placeholder="Enter your registered email">
+                <small id="emailHelpId" class="form-text text-muted text">Email should be unique and have minimum 6 and maximum 30 characters</small>
+
+                <label for="Password" class="font-weight-bold">Password</label>
+                <input type="text" class="form-control" name="Password" id="signInPassword" placeholder="Enter given password">
+                <small id="passwordHelpId" class="form-text text-muted">Password should have minimum 6 and maximum 20 characters</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="signInSave" class="btn btn-primary" data-dismiss="modal">Sign In</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

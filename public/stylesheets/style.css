@@ -66,12 +66,12 @@ body {
 #register li a:hover{
   color: black;
 }
-#register li.signin{
+#register li.signIn{
   text-align: left;
   font-size: medium;
   color: white;
 }
-#register li.signup{
+#register li.signUp{
   text-align: right;
   font-size: medium;
 }

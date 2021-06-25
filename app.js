@@ -8,7 +8,6 @@ var config = require("config");
 
 var indexRouter = require("./routes/index");
 var buyRouter = require("./routes/buy");
-var sellRouter = require("./routes/sell");
 var servicesRouter = require("./routes/services");
 var repairRouter = require("./routes/repair");
 var usersRouter = require("./routes/api/users");
@@ -34,7 +33,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/buy", buyRouter);
-app.use("/sell", sellRouter);
 app.use("/services", servicesRouter);
 app.use("/repair", repairRouter);
 app.use("/api/users", usersRouter);

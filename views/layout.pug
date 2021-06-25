@@ -20,28 +20,38 @@ html
     script(src='/javascripts/script.js')
  
   body
-    include ./lists/sell
+    include ./partials/sellCarModal
+    include ./partials/logInModal
+    include ./partials/signUpModal
     
     <div class="flex-container">
         <div class="row">
             <div id="logo" class="col-lg-3">Car<span>Site</span></div>
             <div id="tabs" class="col-lg-6">
-                <ul id="tab-items" class="float-md-none">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/buy">Buy</a></li>
-                    <li><a type="button" data-toggle="modal" data-target="#sellModal">Sell</a></li>
-                    <li><a href="/repair">Repair</a></li>
-                    <li><a href="/">Rent</a></li>
+                <ul id="tab-items" class="float-md-none d-flex flex-row">
+                    <li class="justify-content-around"><a href="/">Home</a></li>
+                    <li class="d-flex justify-content-around"><a href="/about">About</a></li>
+                    <li class="d-flex justify-content-around"><a href="/services">Services</a></li>
+                    <li class="dropdown d-flex justify-content-around">
+                        <a class="dropdown-toggle" id="dropdownCarId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Car</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a href="/buy">Buy</a>
+                            <a type="button" data-toggle="modal" data-target="#sellModal">Sell</a>
+                            <a href="/">Rent</a>
+                            <a href="/">Rent Out</a>
+                            <a href="/repair">Repair</a>
+                        </div>
+                    </li>
+                    <li class="d-flex justify-content-around"><a href="/">Profile</a></li>
+                    <li class="d-flex justify-content-around"><a href="/">My Cart</a></li>
                 </ul>
             </div>
             <div id="info" class="col-lg-2">
                 <ul id="info-items">
                     <li>+92 337 0407835</li>
                     <ul  id="register">
-                        <li class="signin"><a href="/">Sign In</a></li>
-                        <li class="signup"><a href="/">Sign Up</a></li>
+                        <li class="signIn"><a type="button" data-toggle="modal" data-target="#signInModal">Sign In</a></li>
+                        <li class="signUp"><a type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</a></li>
                     </ul>
                 </ul>
             </div>
@@ -71,16 +81,18 @@ html
                 <div class="col-md-6">
                     <div class="footer-widget">
                         <h4>About company</h4>
-                        <p>CARMECHANIC.PK is an Online Mechanic Platform that provides reliable and expert Car Mechanics in Pakistan at the convenience of your Door Step.</p>
+                        <p>CarSite.com.pk is an Online Car Buying, Selling, Renting, and Repairing Platform that provides reliable and expert Car Dealers, Mechanics and Experts in Pakistan at the convenience of your Door Step.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="footer-widget">
                         <h4>Company Address</h4>
                         <address>
-                            <b>CARMECHANIC.pk, inc.</b>
-                            main sidhu street near pso lahore cantt.<br>
-                            ph: 03224916205
+                            <b>CarSite.com.pk, inc.</b>
+                            main FB-42 Wahdat Colony, Lahore, Punjab, Pakistan.<br>
+                            ph: 03370407835
+                            ph: 03124991214
+                            p danialsyed66@gmail.com
                         </address>
                     </div>
                 </div>
