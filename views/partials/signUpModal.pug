@@ -8,21 +8,21 @@
                     </button>
             </div>
             <div class="modal-body">
-                <label for="Name" class="font-weight-bold">Name</label>
-                <input type="text" class="form-control" name="Name" id="signUpName" placeholder="Enter your name">
-                <small id="nameHelpId" class="form-text text-muted text">Name should have minimum 3 and maximum 20 characters</small>
-                
-                <label for="Email" class="font-weight-bold">Email</label>
-                <input type="text" class="form-control" name="Email" id="signUpEmail" placeholder="Enter your email">
-                <small id="emailHelpId" class="form-text text-muted text">Email should be unique and have minimum 6 and maximum 30 characters</small>
-
-                <label for="Password" class="font-weight-bold">Password</label>
-                <input type="text" class="form-control" name="Password" id="signUpPassword" placeholder="Enter your password">
-                <small id="passwordHelpId" class="form-text text-muted">Password should have minimum 6 and maximum 20 characters</small>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="signUpSave" class="btn btn-primary" data-dismiss="modal">Sign Up</button>
+                form(action="/api/users/register",method="post")
+                    .form-group
+                        label(for="name" class="font-weight-bold") Name
+                        input#name(type="text", class="form-control", name="name", placeholder="Enter your name")
+                        <small id="nameHelpId" class="form-text text-muted text">Name should have minimum 3 and maximum 20 characters</small>
+                    .form-group
+                        label(for="email" class="font-weight-bold") Email
+                        input#email(type="text", class="form-control", name="email", placeholder="Enter your email")
+                        <small id="emailHelpId" class="form-text text-muted text">Email should be unique and have minimum 6 and maximum 30 characters</small>
+                    .form-group
+                        label(for="password" class="font-weight-bold") Password
+                        input#password(type="password", class="form-control", name="password", placeholder="Enter your password")
+                        <small id="passwordHelpId" class="form-text text-muted">Password should have minimum 6 and maximum 20 characters</small>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    input(type="submit" id="signUpSave" class="btn btn-primary" value="Sign Up")
             </div>
         </div>
     </div>

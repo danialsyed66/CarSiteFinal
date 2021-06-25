@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 
 router.post("/register", async (req, res) => {
+  console.log("djddj");
   let user = await User.findOne({ email: req.body.email });
   if (user) return res.status(400).send("User with given Email already exist");
   user = new User();
@@ -15,6 +16,7 @@ router.post("/register", async (req, res) => {
   user.password = req.body.password;
   await user.generateHashedPassword();
   await user.save();
+  res.redirect("/");
   return res.send(_.pick(user, ["name", "email"]));
 });
 
@@ -27,7 +29,16 @@ router.post("/login", async (req, res) => {
     { _id: user._id, name: user.name },
     config.get("jwtPrivateKey")
   );
-  res.send(token);
+  req.session.user = user;
+  // res.send(token);
+  res.cookie("auth", token);
+  res.redirect("/");
+});
+
+router.get("/logout", function (req, res, next) {
+  req.session.user = null;
+  res.cookie("auth", null);
+  res.redirect("/");
 });
 
 module.exports = router;

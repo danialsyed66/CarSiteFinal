@@ -28,11 +28,11 @@ html
         <div class="row">
             <div id="logo" class="col-lg-3">Car<span>Site</span></div>
             <div id="tabs" class="col-lg-6">
-                <ul id="tab-items" class="float-md-none d-flex flex-row">
-                    <li class="justify-content-around"><a href="/">Home</a></li>
-                    <li class="d-flex justify-content-around"><a href="/about">About</a></li>
-                    <li class="d-flex justify-content-around"><a href="/services">Services</a></li>
-                    <li class="dropdown d-flex justify-content-around">
+                <ul id="tab-items" class="float-md-none">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li class="dropdown">
                         <a class="dropdown-toggle" id="dropdownCarId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Car</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownId">
                             <a href="/buy">Buy</a>
@@ -42,16 +42,20 @@ html
                             <a href="/repair">Repair</a>
                         </div>
                     </li>
-                    <li class="d-flex justify-content-around"><a href="/">Profile</a></li>
-                    <li class="d-flex justify-content-around"><a href="/">My Cart</a></li>
+                    if user 
+                        <li><a href="/">My Cart</a></li>
                 </ul>
             </div>
             <div id="info" class="col-lg-2">
                 <ul id="info-items">
                     <li>+92 337 0407835</li>
                     <ul  id="register">
-                        <li class="signIn"><a type="button" data-toggle="modal" data-target="#signInModal">Sign In</a></li>
-                        <li class="signUp"><a type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</a></li>
+                        if !user
+                            <li class="signIn"><a type="button" data-toggle="modal" data-target="#signInModal">Sign In</a></li>
+                            <li class="signUp"><a type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</a></li>
+                        if user
+                            <li class="signIn"><a type="button">Profile</a></li>
+                            <li class="signUp"><a type="button" href="/api/users/logout">Log Out</a></li>
                     </ul>
                 </ul>
             </div>

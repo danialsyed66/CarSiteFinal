@@ -5,6 +5,8 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var config = require("config");
+var session = require("express-session");
+var sessionAuth = require("./middlewares/sessionAuth");
 
 var indexRouter = require("./routes/index");
 var buyRouter = require("./routes/buy");
@@ -14,6 +16,7 @@ var usersRouter = require("./routes/api/users");
 var carsApiRouter = require("./routes/api/cars");
 var sparepartsApiRouter = require("./routes/api/spareparts");
 var servicesApiRouter = require("./routes/api/services");
+const { JsonWebTokenError } = require("jsonwebtoken");
 // const { config } = require("process");
 
 var app = express();
@@ -21,10 +24,13 @@ var app = express();
 // const DB = "mongodb://localhost/CarSite"
 // const DB = "mongodb+srv://danialsyed66:danialsyed@cluster0.zsvyw.mongodb.net/CarSite?retryWrites=true&w=majority";
 
+app.use(session({ secret: "keyboard cat", cookie: { maxAge: 60000 } }));
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
+app.use(sessionAuth);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

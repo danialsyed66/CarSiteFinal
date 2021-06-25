@@ -8,17 +8,15 @@
                     </button>
             </div>
             <div class="modal-body">
-                <label for="Email" class="font-weight-bold">Email</label>
-                <input type="text" class="form-control" name="Email" id="signInEmail" placeholder="Enter your registered email">
-                <small id="emailHelpId" class="form-text text-muted text">Email should be unique and have minimum 6 and maximum 30 characters</small>
-
-                <label for="Password" class="font-weight-bold">Password</label>
-                <input type="text" class="form-control" name="Password" id="signInPassword" placeholder="Enter given password">
-                <small id="passwordHelpId" class="form-text text-muted">Password should have minimum 6 and maximum 20 characters</small>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="signInSave" class="btn btn-primary" data-dismiss="modal">Sign In</button>
+                form(action="/api/users/login",method="post")
+                    .form-group
+                        label(for="email" class="font-weight-bold") Email
+                        input#email(type="text", class="form-control", name="email", placeholder="Enter your email" value="admin@admin.com")
+                    .form-group
+                        label(for="password" class="font-weight-bold") Password
+                        input#password(type="password", class="form-control", name="password", placeholder="Enter your password" value="admin123")
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    input(type="submit" id="signInSave" class="btn btn-primary" value="Sign In")
             </div>
         </div>
     </div>
