@@ -164,8 +164,7 @@ function handleDelete() {
     url: "/api/" + data + "/" + id,
     method: "DELETE",
     error: function (response) {
-      var products = $("#products");
-      products.html("An error occoured in delete");
+      location.reload(true);
     },
     success: function () {
       location.reload(true);
@@ -219,8 +218,8 @@ function handleCarSave() {
     data: { name, price, model, used },
     method: "PUT",
     error: function (response) {
-      var products = $("#products");
-      products.html("An error occoured in edit");
+      $("#editModal").modal("hide");
+      window.location.replace("/buy");
     },
     success: function () {
       $("#editModal").modal("hide");
@@ -251,8 +250,8 @@ function handleServiceSave() {
     data: { name, price },
     method: "PUT",
     error: function (response) {
-      var products = $("#products");
-      products.html("An error occoured in edit");
+      $("#editModal").modal("hide");
+      window.location.replace("/buy");
     },
     success: function () {
       $("#editModal").modal("hide");
@@ -289,8 +288,8 @@ function handleSparepartSave() {
     data: { name, price, model, used, company },
     method: "PUT",
     error: function (response) {
-      var products = $("#products");
-      products.html("An error occoured in edit");
+      $("#editModal").modal("hide");
+      window.location.replace("/services");
     },
     success: function () {
       $("#editModal").modal("hide");
