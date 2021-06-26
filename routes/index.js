@@ -13,5 +13,8 @@ router.get("/cart", function (req, res, next) {
   if (!cart) cart = [];
   res.render("cart", { cart });
 });
+router.get("/signin", function (req, res, next) {
+  res.render("partials/logInModal");
+});
 
 module.exports = router;
