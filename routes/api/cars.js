@@ -49,7 +49,7 @@ router.post("/", validateCars, auth, async (req, res) => {
   return res.send(car);
 });
 
-router.get("/cart/:id", async (req, res) => {
+router.get("/cart/:id", auth, async (req, res) => {
   let car = await Cars.findById(req.params.id);
   let cart = [];
   if (req.cookies.cart) cart = req.cookies.cart;
@@ -58,7 +58,7 @@ router.get("/cart/:id", async (req, res) => {
   // return res.send(car);
   res.redirect("/buy");
 });
-router.get("/cart/remove/:id", async function (req, res, next) {
+router.get("/cart/remove/:id", auth, async function (req, res, next) {
   let cart = [];
   if (req.cookies.cart) cart = req.cookies.cart;
   cart.splice(
