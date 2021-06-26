@@ -121,7 +121,7 @@ function loadSpareparts() {
                           <td>${response[i].price}</td>
                           <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
                           <td class="col-1"> <button class="btn btn-info float-right edit-spareparts" data-toggle="modal" data-target="#editSparepartModal"> Edit </button> </td>
-                          <td class="col-2"> <button class="btn btn-primary sparepart-cart-btn float-right"> Add to Car </button> </td>
+                          <td class="col-2"> <button class="btn btn-primary sparepart-cart-btn float-right"> Add to Cart </button> </td>
                       </tr>`);
       }
     },
@@ -148,7 +148,7 @@ function loadServices() {
                           <td>${response[i].price}</td>
                           <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
                           <td class="col-1"> <button class="btn btn-info float-right edit-services" data-toggle="modal" data-target="#editServiceModal"> Edit </button> </td>
-                          <td class="col-2"> <button class="btn btn-primary service-cart-btn float-right"> Add to Car </button> </td>
+                          <td class="col-2"> <button class="btn btn-primary service-cart-btn float-right"> Add to Cart </button> </td>
                       </tr>`);
       }
     },
