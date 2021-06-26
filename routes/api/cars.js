@@ -6,14 +6,11 @@ var auth = require("../../middlewares/auth");
 var admin = require("../../middlewares/admin");
 
 //get cars
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   let page = Number(req.query.page ? req.query.page : 1);
   let perPage = Number(req.query.perPage ? req.query.perPage : 10);
   let skipRecords = perPage * (page - 1);
   let cars = await Cars.find().skip(skipRecords).limit(perPage);
-  console.log("hhh");
-  console.log(message);
-  console.log(req.session);
   return res.send(cars);
 });
 //get single cars
@@ -27,7 +24,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 //update a record
-router.put("/:id", validateCars, async (req, res) => {
+router.put("/:id", validateCars, auth, admin, async (req, res) => {
   let car = await Cars.findById(req.params.id);
   car.name = req.body.name;
   car.model = req.body.model;
@@ -42,7 +39,7 @@ router.delete("/:id", auth, admin, async (req, res) => {
   return res.send(car);
 });
 //Insert a record
-router.post("/", validateCars, async (req, res) => {
+router.post("/", validateCars, auth, async (req, res) => {
   let car = new Cars();
   car.name = req.body.name;
   car.model = req.body.model;
@@ -51,4 +48,25 @@ router.post("/", validateCars, async (req, res) => {
   await car.save();
   return res.send(car);
 });
+
+router.get("/cart/:id", async (req, res) => {
+  let car = await Cars.findById(req.params.id);
+  let cart = [];
+  if (req.cookies.cart) cart = req.cookies.cart;
+  cart.push(car);
+  res.cookie("cart", cart);
+  // return res.send(car);
+  res.redirect("/buy");
+});
+router.get("/cart/remove/:id", async function (req, res, next) {
+  let cart = [];
+  if (req.cookies.cart) cart = req.cookies.cart;
+  cart.splice(
+    cart.findIndex((c) => c._id == req.params.id),
+    1
+  );
+  res.cookie("cart", cart);
+  res.redirect("/cart");
+});
+
 module.exports = router;

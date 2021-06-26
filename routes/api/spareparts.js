@@ -2,6 +2,8 @@ const express = require("express");
 let router = express.Router();
 const validateSpareparts = require("../../middlewares/validateSpareparts");
 var { Spareparts } = require("../../models/spareparts");
+var auth = require("../../middlewares/auth");
+var admin = require("../../middlewares/admin");
 
 //get spareparts
 router.get("/", async (req, res) => {
@@ -22,7 +24,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 //update a record
-router.put("/:id", validateSpareparts, async (req, res) => {
+router.put("/:id", validateSpareparts, auth, admin, async (req, res) => {
   let car = await Spareparts.findById(req.params.id);
   car.name = req.body.name;
   car.company = req.body.company;
@@ -32,12 +34,12 @@ router.put("/:id", validateSpareparts, async (req, res) => {
   return res.send(car);
 });
 //update a record
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, admin, async (req, res) => {
   let car = await Spareparts.findByIdAndDelete(req.params.id);
   return res.send(car);
 });
 //Insert a record
-router.post("/", validateSpareparts, async (req, res) => {
+router.post("/", validateSpareparts, auth, async (req, res) => {
   let car = new Spareparts();
   car.name = req.body.name;
   car.company = req.body.company;
@@ -46,4 +48,25 @@ router.post("/", validateSpareparts, async (req, res) => {
   await car.save();
   return res.send(car);
 });
+
+router.get("/cart/:id", auth, async (req, res) => {
+  let car = await Spareparts.findById(req.params.id);
+  let cart = [];
+  if (req.cookies.cart) cart = req.cookies.cart;
+  cart.push(car);
+  res.cookie("cart", cart);
+  // return res.send(car);
+  res.redirect("/buy");
+});
+router.get("/cart/remove/:id", auth, async function (req, res, next) {
+  let cart = [];
+  if (req.cookies.cart) cart = req.cookies.cart;
+  cart.splice(
+    cart.findIndex((c) => c._id == req.params.id),
+    1
+  );
+  res.cookie("cart", cart);
+  res.redirect("/cart");
+});
+
 module.exports = router;

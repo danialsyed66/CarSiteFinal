@@ -2,14 +2,24 @@ $(function () {
   loadCars();
   loadSpareparts();
   loadServices();
+
   $(".body").on("click", ".btn-danger", handleDelete);
+
+  $(".body").on("click", ".car-cart-btn", handleCarCart);
+  $(".body").on("click", ".service-cart-btn", handleServiceCart);
+  $(".body").on("click", ".sparepart-cart-btn", handleSparepartCart);
+
   $(".body").on("click", ".edit-cars", editCars);
-  $("#editCarSave").click(handleSave);
+  $("#editCarSave").click(handleCarSave);
+
   $(".body").on("click", ".edit-services", editServices);
   $("#editServiceSave").click(handleServicesSave);
+
   $(".body").on("click", ".edit-spareparts", editSpareparts);
   $("#editSparepartSave").click(handleSparepartSave);
+
   $("#addCarSave").click(addCar);
+
   // $(document).ready(function () {
   //   // let toastme = message;
   //   // console.log("hello world")
@@ -62,9 +72,8 @@ function loadCars() {
                         <td>${response[i].used}</td>
                         <td>${response[i].price}</td>
                         <td class="col-1"> <button class="btn btn-danger del-btn float-right"> Delete </button> </td>
-                        <td class="col-1"> <button class="btn btn-info float-right edit-cars" id="${
-                          response[i].id
-                        }" data-toggle="modal" data-target="#editCarModal"> Edit </button> </td>
+                        <td class="col-1"> <button class="btn btn-info float-right edit-cars" data-toggle="modal" data-target="#editCarModal"> Edit </button> </td>
+                        <td class="col-1"> <button class="btn btn-primary car-cart-btn float-right"> Add to Cart </button> </td>
                     </tr>`);
       }
     },
@@ -112,6 +121,7 @@ function loadSpareparts() {
                           <td>${response[i].price}</td>
                           <td class="col-1"> <button class="btn btn-danger del-btn float-right"> Delete </button> </td>
                           <td class="col-1"> <button class="btn btn-info float-right edit-spareparts"> Edit </button> </td>
+                          <td class="col-1"> <button class="btn btn-primary sparepart-cart-btn float-right"> Add to Car </button> </td>
                       </tr>`);
       }
     },
@@ -137,9 +147,8 @@ function loadServices() {
                           <td>${response[i].name}</td>
                           <td>${response[i].price}</td>
                           <td class="col-1"> <button class="btn btn-danger del-btn float-right"> Delete </button> </td>
-                          <td class="col-1"> <button class="btn btn-info float-right edit-services" id="${
-                            response[i].id
-                          }> Edit </button> </td>
+                          <td class="col-1"> <button class="btn btn-info float-right edit-services"> Edit </button> </td>
+                          <td class="col-1"> <button class="btn btn-primary service-cart-btn float-right"> Add to Car </button> </td>
                       </tr>`);
       }
     },
@@ -163,6 +172,27 @@ function handleDelete() {
     },
   });
 }
+function handleCarCart() {
+  var btn = $(this);
+  var parentTr = btn.closest(".text-center");
+  let id = parentTr.attr("data-id");
+
+  window.location.replace("/api/cars/cart/" + id);
+}
+function handleServiceCart() {
+  var btn = $(this);
+  var parentTr = btn.closest(".text-center");
+  let id = parentTr.attr("data-id");
+
+  window.location.replace("/api/services/cart/" + id);
+}
+function handleSparepartCart() {
+  var btn = $(this);
+  var parentTr = btn.closest(".text-center");
+  let id = parentTr.attr("data-id");
+
+  window.location.replace("/api/spareparts/cart/" + id);
+}
 
 function editCars() {
   var btn = $(this);
@@ -174,7 +204,6 @@ function editCars() {
     $("#editCarName").val(response.name);
     $("#editCarModel").val(response.model);
     $("#editCarPrice").val(response.price);
-    // $('input[name="name_of_your_radiobutton"]:checked').val();
     $("#editCarModal").modal("show");
   });
 }
@@ -184,7 +213,8 @@ function handleCarSave() {
   var name = $("#editCarName").val();
   var price = $("#editCarPrice").val();
   var model = $("#editCarModel").val();
-  var used = $('input[name="editCarUsed"]:checked').val();
+  var used = true;
+
   $.ajax({
     url: "/api/cars/" + id,
     data: { name, price, model, used },
@@ -194,8 +224,8 @@ function handleCarSave() {
       products.html("An error occoured in edit");
     },
     success: function () {
-      loadProducts();
       $("#editModal").modal("hide");
+      window.location.replace("/buy");
     },
   });
 }
