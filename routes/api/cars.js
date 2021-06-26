@@ -12,6 +12,7 @@ router.get("/", auth, async (req, res) => {
   let skipRecords = perPage * (page - 1);
   let cars = await Cars.find().skip(skipRecords).limit(perPage);
   console.log("hhh");
+  console.log(message);
   console.log(req.session);
   return res.send(cars);
 });

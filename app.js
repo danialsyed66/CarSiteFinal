@@ -7,6 +7,8 @@ var mongoose = require("mongoose");
 var config = require("config");
 var session = require("express-session");
 var sessionAuth = require("./middlewares/sessionAuth");
+var err = require("./middlewares/err");
+// var err = require("./middlewares/err");
 
 var indexRouter = require("./routes/index");
 var buyRouter = require("./routes/buy");
@@ -18,6 +20,7 @@ var sparepartsApiRouter = require("./routes/api/spareparts");
 var servicesApiRouter = require("./routes/api/services");
 const { JsonWebTokenError } = require("jsonwebtoken");
 // const { config } = require("process");
+global.message = "erroorr";
 
 var app = express();
 
@@ -31,6 +34,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 app.use(sessionAuth);
+app.use(err);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
