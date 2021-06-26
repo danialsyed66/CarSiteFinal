@@ -1,0 +1,33 @@
+//- <!-- Modal -->
+<div class="modal fade" id="editSparepartModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Edit Product</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="ID" id="editSparepartID" aria-describedby="helpId" placeholder="ID of the sparepart">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="Name" id="editSparepartName" aria-describedby="helpId" placeholder="Name of the sparepart">
+
+            <label for="name">Company</label>
+            <input type="text" class="form-control" name="Company" id="editSparepartCompany" aria-describedby="helpId" placeholder="Company of the sparepart">
+
+            <label for="name">Model</label>
+            <input type="number" class="form-control" name="Model" id="editSparepartModel" aria-describedby="helpId" placeholder="Model of the sparepart">
+            
+            <label for="name">Price</label>
+            <input type="number" class="form-control" name="Price" id="editSparepartPrice" aria-describedby="helpId" placeholder="Price of the sparepart">
+        </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="editSparepartSave" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+    </div>
+</div>
