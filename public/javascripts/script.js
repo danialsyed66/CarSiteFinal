@@ -71,7 +71,7 @@ function loadCars() {
                         <td>${response[i].model}</td>
                         <td>${response[i].used}</td>
                         <td>${response[i].price}</td>
-                        <td class="col-1"> <button class="btn btn-danger del-btn float-right"> Delete </button> </td>
+                        <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
                         <td class="col-1"> <button class="btn btn-info float-right edit-cars" data-toggle="modal" data-target="#editCarModal"> Edit </button> </td>
                         <td class="col-2"> <button class="btn btn-primary car-cart-btn float-right"> Add to Cart </button> </td>
                     </tr>`);
@@ -119,7 +119,7 @@ function loadSpareparts() {
                           <td>${response[i].company}</td>
                           <td>${response[i].model}</td>
                           <td>${response[i].price}</td>
-                          <td class="col-1"> <button class="btn btn-danger del-btn float-right"> Delete </button> </td>
+                          <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
                           <td class="col-1"> <button class="btn btn-info float-right edit-spareparts" data-toggle="modal" data-target="#editSparepartModal"> Edit </button> </td>
                           <td class="col-2"> <button class="btn btn-primary sparepart-cart-btn float-right"> Add to Car </button> </td>
                       </tr>`);
@@ -146,7 +146,7 @@ function loadServices() {
                           <td>${i + 1}</td>
                           <td>${response[i].name}</td>
                           <td>${response[i].price}</td>
-                          <td class="col-1"> <button class="btn btn-danger del-btn float-right"> Delete </button> </td>
+                          <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
                           <td class="col-1"> <button class="btn btn-info float-right edit-services" data-toggle="modal" data-target="#editServiceModal"> Edit </button> </td>
                           <td class="col-2"> <button class="btn btn-primary service-cart-btn float-right"> Add to Car </button> </td>
                       </tr>`);
@@ -237,7 +237,6 @@ function editServices() {
   $.get("/api/services/" + id, function (response) {
     $("#editServiceID").val(response._id);
     $("#editServiceName").val(response.name);
-    $("#editServiceModel").val(response.model);
     $("#editServicePrice").val(response.price);
     $("#editServiceModal").modal("show");
   });
@@ -246,12 +245,10 @@ function handleServiceSave() {
   var id = $("#editServiceID").val();
   var name = $("#editServiceName").val();
   var price = $("#editServicePrice").val();
-  var model = $("#editServiceModel").val();
-  var used = true;
 
   $.ajax({
     url: "/api/services/" + id,
-    data: { name, price, model, used },
+    data: { name, price },
     method: "PUT",
     error: function (response) {
       var products = $("#products");
@@ -272,6 +269,7 @@ function editSpareparts() {
   $.get("/api/spareparts/" + id, function (response) {
     $("#editSparepartID").val(response._id);
     $("#editSparepartName").val(response.name);
+    $("#editSparepartCompany").val(response.company);
     $("#editSparepartModel").val(response.model);
     $("#editSparepartPrice").val(response.price);
     $("#editSparepartModal").modal("show");
@@ -281,13 +279,14 @@ function editSpareparts() {
 function handleSparepartSave() {
   var id = $("#editSparepartID").val();
   var name = $("#editSparepartName").val();
+  var company = $("#editSparepartCompany").val();
   var price = $("#editSparepartPrice").val();
   var model = $("#editSparepartModel").val();
   var used = true;
 
   $.ajax({
     url: "/api/spareparts/" + id,
-    data: { name, price, model, used },
+    data: { name, price, model, used, company },
     method: "PUT",
     error: function (response) {
       var products = $("#products");
@@ -295,7 +294,7 @@ function handleSparepartSave() {
     },
     success: function () {
       $("#editModal").modal("hide");
-      window.location.replace("/buy");
+      window.location.replace("/services");
     },
   });
 }
