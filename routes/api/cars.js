@@ -40,6 +40,7 @@ router.delete("/:id", auth, admin, async (req, res) => {
 });
 //Insert a record
 router.post("/", validateCars, auth, async (req, res) => {
+  console.log(errorToster)
   let car = new Cars();
   car.name = req.body.name;
   car.model = req.body.model;
