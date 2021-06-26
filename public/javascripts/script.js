@@ -13,7 +13,7 @@ $(function () {
   $("#editCarSave").click(handleCarSave);
 
   $(".body").on("click", ".edit-services", editServices);
-  $("#editServiceSave").click(handleServicesSave);
+  $("#editServiceSave").click(handleServiceSave);
 
   $(".body").on("click", ".edit-spareparts", editSpareparts);
   $("#editSparepartSave").click(handleSparepartSave);
@@ -73,7 +73,7 @@ function loadCars() {
                         <td>${response[i].price}</td>
                         <td class="col-1"> <button class="btn btn-danger del-btn float-right"> Delete </button> </td>
                         <td class="col-1"> <button class="btn btn-info float-right edit-cars" data-toggle="modal" data-target="#editCarModal"> Edit </button> </td>
-                        <td class="col-1"> <button class="btn btn-primary car-cart-btn float-right"> Add to Cart </button> </td>
+                        <td class="col-2"> <button class="btn btn-primary car-cart-btn float-right"> Add to Cart </button> </td>
                     </tr>`);
       }
     },
@@ -121,7 +121,7 @@ function loadSpareparts() {
                           <td>${response[i].price}</td>
                           <td class="col-1"> <button class="btn btn-danger del-btn float-right"> Delete </button> </td>
                           <td class="col-1"> <button class="btn btn-info float-right edit-spareparts" data-toggle="modal" data-target="#editSparepartModal"> Edit </button> </td>
-                          <td class="col-1"> <button class="btn btn-primary sparepart-cart-btn float-right"> Add to Car </button> </td>
+                          <td class="col-2"> <button class="btn btn-primary sparepart-cart-btn float-right"> Add to Car </button> </td>
                       </tr>`);
       }
     },
@@ -147,8 +147,8 @@ function loadServices() {
                           <td>${response[i].name}</td>
                           <td>${response[i].price}</td>
                           <td class="col-1"> <button class="btn btn-danger del-btn float-right"> Delete </button> </td>
-                          <td class="col-1"> <button class="btn btn-info float-right edit-services" data-toggle="modal" data-target="#editSparepartModal"> Edit </button> </td>
-                          <td class="col-1"> <button class="btn btn-primary service-cart-btn float-right"> Add to Car </button> </td>
+                          <td class="col-1"> <button class="btn btn-info float-right edit-services" data-toggle="modal" data-target="#editServiceModal"> Edit </button> </td>
+                          <td class="col-2"> <button class="btn btn-primary service-cart-btn float-right"> Add to Car </button> </td>
                       </tr>`);
       }
     },

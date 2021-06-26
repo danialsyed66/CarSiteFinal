@@ -16,46 +16,47 @@ router.get("/", async (req, res) => {
 //get single spareparts
 router.get("/:id", async (req, res) => {
   try {
-    let car = await Spareparts.findById(req.params.id);
-    if (!car) return res.status(400).send("Car With given ID is not present"); //when id is not present id db
-    return res.send(car); //everything is ok
+    let sparepart = await Spareparts.findById(req.params.id);
+    if (!sparepart)
+      return res.status(400).send("Sparepart With given ID is not present"); //when id is not present id db
+    return res.send(sparepart); //everything is ok
   } catch (err) {
     return res.status(400).send("Invalid ID"); // format of id is not correct
   }
 });
 //update a record
 router.put("/:id", validateSpareparts, auth, admin, async (req, res) => {
-  let car = await Spareparts.findById(req.params.id);
-  car.name = req.body.name;
-  car.company = req.body.company;
-  car.model = req.body.model;
-  car.price = req.body.price;
-  await car.save();
-  return res.send(car);
+  let sparepart = await Spareparts.findById(req.params.id);
+  sparepart.name = req.body.name;
+  sparepart.company = req.body.company;
+  sparepart.model = req.body.model;
+  sparepart.price = req.body.price;
+  await sparepart.save();
+  return res.send(sparepart);
 });
 //update a record
 router.delete("/:id", auth, admin, async (req, res) => {
-  let car = await Spareparts.findByIdAndDelete(req.params.id);
-  return res.send(car);
+  let sparepart = await Spareparts.findByIdAndDelete(req.params.id);
+  return res.send(sparepart);
 });
 //Insert a record
 router.post("/", validateSpareparts, auth, async (req, res) => {
-  let car = new Spareparts();
-  car.name = req.body.name;
-  car.company = req.body.company;
-  car.model = req.body.model;
-  car.price = req.body.price;
-  await car.save();
-  return res.send(car);
+  let sparepart = new Spareparts();
+  sparepart.name = req.body.name;
+  sparepart.company = req.body.company;
+  sparepart.model = req.body.model;
+  sparepart.price = req.body.price;
+  await sparepart.save();
+  return res.send(sparepart);
 });
 
 router.get("/cart/:id", auth, async (req, res) => {
-  let car = await Spareparts.findById(req.params.id);
+  let sparepart = await Spareparts.findById(req.params.id);
   let cart = [];
   if (req.cookies.cart) cart = req.cookies.cart;
-  cart.push(car);
+  cart.push(sparepart);
   res.cookie("cart", cart);
-  // return res.send(car);
+  // return res.send(sparepart);
   res.redirect("/buy");
 });
 router.get("/cart/remove/:id", auth, async function (req, res, next) {

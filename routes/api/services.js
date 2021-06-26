@@ -16,42 +16,43 @@ router.get("/", async (req, res) => {
 //get single services
 router.get("/:id", async (req, res) => {
   try {
-    let car = await Services.findById(req.params.id);
-    if (!car) return res.status(400).send("Car With given ID is not present"); //when id is not present id db
-    return res.send(car); //everything is ok
+    let service = await Services.findById(req.params.id);
+    if (!service)
+      return res.status(400).send("Service With given ID is not present"); //when id is not present id db
+    return res.send(service); //everything is ok
   } catch (err) {
     return res.status(400).send("Invalid ID"); // format of id is not correct
   }
 });
 //update a record
 router.put("/:id", validateServices, auth, admin, async (req, res) => {
-  let car = await Services.findById(req.params.id);
-  car.name = req.body.name;
-  car.price = req.body.price;
-  await car.save();
-  return res.send(car);
+  let service = await Services.findById(req.params.id);
+  service.name = req.body.name;
+  service.price = req.body.price;
+  await service.save();
+  return res.send(service);
 });
 //update a record
 router.delete("/:id", auth, admin, async (req, res) => {
-  let car = await Services.findByIdAndDelete(req.params.id);
-  return res.send(car);
+  let service = await Services.findByIdAndDelete(req.params.id);
+  return res.send(service);
 });
 //Insert a record
 router.post("/", validateServices, auth, admin, async (req, res) => {
-  let car = new Services();
-  car.name = req.body.name;
-  car.price = req.body.price;
-  await car.save();
-  return res.send(car);
+  let service = new Services();
+  service.name = req.body.name;
+  service.price = req.body.price;
+  await service.save();
+  return res.send(service);
 });
 
 router.get("/cart/:id", auth, async (req, res) => {
-  let car = await Services.findById(req.params.id);
+  let service = await Services.findById(req.params.id);
   let cart = [];
   if (req.cookies.cart) cart = req.cookies.cart;
-  cart.push(car);
+  cart.push(service);
   res.cookie("cart", cart);
-  // return res.send(car);
+  // return res.send(service);
   res.redirect("/services");
 });
 router.get("/cart/remove/:id", auth, async function (req, res, next) {
