@@ -3,7 +3,7 @@ $(function () {
   loadSpareparts();
   loadServices();
 
-  $(".body").on("click", ".btn-danger", handleDelete);
+  $(".body").on("click", ".del-btn", handleDelete);
 
   $(".body").on("click", ".car-cart-btn", handleCarCart);
   $(".body").on("click", ".service-cart-btn", handleServiceCart);
@@ -49,6 +49,26 @@ $(function () {
   //     { timeOut: 5000 }
   //   );
   // });
+});
+$(function () {
+  $("#addCarSave").click(function() {
+    var title = $("#addBookTitle").val();
+    var author = $("#addBookTitle").val();
+    var publishYear = $("#addCarModel").val();
+    var isbnNumber = $("#addBookISBNNumber").val();
+    $.ajax({
+      url: "/api/books",
+      data: { title, author, publishYear, isbnNumber },
+      method: "POST",
+      error: function (response) {
+        var cars = $("#books");
+        books.html("An error occoured in add new book");
+      },
+      success: function () {
+        window.location.replace("/list/books");
+      },
+    });
+  });
 });
 
 function loadCars() {
