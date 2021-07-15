@@ -3,6 +3,7 @@ extends ../layout
 block content
   div(class="flex-container2 f3 col-md-12")
     h1 List of Services
+    h1=title
     div
       table.container.table.table-dark.table-striped.m-b-5
         thead
@@ -11,3 +12,13 @@ block content
             th Service
             th Cost
         tbody.services.body
+          each service, index in services
+            tr.text-center
+              td=index+1
+              td=service.name
+              td=service.price
+              if user
+                <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
+                <td class="col-1"> <button class="btn btn-info float-right edit-services" data-toggle="modal" data-target="#editServiceModal"> Edit </button> </td>
+                <td class="col-2"> <button class="btn btn-primary service-cart-btn float-right"> Add to Cart </button> </td>
+                      

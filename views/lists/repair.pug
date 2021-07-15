@@ -11,6 +11,15 @@ block content
             th Service
             th Cost
         tbody.services.body
+          each service, index in services
+            tr.text-center
+              td=index+1
+              td=service.name
+              td=service.price
+              if user
+                <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
+                <td class="col-1"> <button class="btn btn-info float-right edit-services" data-toggle="modal" data-target="#editServiceModal"> Edit </button> </td>
+                <td class="col-2"> <button class="btn btn-primary service-cart-btn float-right"> Add to Cart </button> </td>
     
     h1 List of Spare Parts
     div
@@ -23,3 +32,14 @@ block content
             th Model
             th Price
         tbody.spareparts.body
+          each sparepart, index in spareparts
+            tr.text-center
+              td=index+1
+              td=sparepart.name
+              td=sparepart.company
+              td=sparepart.model
+              td=sparepart.price
+              if user
+                <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
+                <td class="col-1"> <button class="btn btn-info float-right edit-spareparts" data-toggle="modal" data-target="#editSparepartModal"> Edit </button> </td>
+                <td class="col-2"> <button class="btn btn-primary sparepart-cart-btn float-right"> Add to Cart </button> </td>

@@ -1,8 +1,4 @@
 $(function () {
-  loadCars();
-  loadSpareparts();
-  loadServices();
-
   $(".body").on("click", ".del-btn", handleDelete);
 
   $(".body").on("click", ".car-cart-btn", handleCarCart);
@@ -20,37 +16,6 @@ $(function () {
 
   $("#addCarSave").click(addCar);
 
-  // $(document).ready(function () {
-  //   // let toastme = message;
-  //   // console.log("hello world")
-  //   // console.log(tos)
-  //   // // Display a warning toast, with no title
-  //   // toastr.warning(toastme);
-  //   // Display a warning toast, with no title
-  //   var toastme = "ghgh";
-  //   toastr.warning(toastme);
-  //   toastr.warning(
-  //     "My name is Inigo Montoya. You killed my father, prepare to die!"
-  //   );
-
-  //   // Display a success toast, with a title
-  //   toastr.success("Have fun storming the castle!", "Miracle Max Says");
-
-  //   // Display an error toast, with a title
-  //   toastr.error(
-  //     "I do not think that word means what you think it means.",
-  //     "Inconceivable!"
-  //   );
-
-  //   // Override global options
-  //   toastr.success(
-  //     "We do have the Kapua suite available.",
-  //     "Turtle Bay Resort",
-  //     { timeOut: 5000 }
-  //   );
-  // });
-});
-$(function () {
   $("#addCarSave").click(function() {
     var title = $("#addBookTitle").val();
     var author = $("#addBookTitle").val();
@@ -71,109 +36,6 @@ $(function () {
   });
 });
 
-function loadCars() {
-  $.ajax({
-    url: "/api/cars",
-    method: "GET",
-    error: function (response) {
-      var cars = $("#cars");
-      cars.html("An error occoured");
-    },
-    success: function (response) {
-      var cars = $("#cars");
-      cars.empty();
-      for (var i = 0; i < response.length; i++) {
-        cars.append(`<tr class="text-center" id="del-tr" data="cars" data-id="${
-          response[i]._id
-        }">
-                        <td>${i + 1}</td>
-                        <td>${response[i].name}</td>
-                        <td>${response[i].model}</td>
-                        <td>${response[i].used}</td>
-                        <td>${response[i].price}</td>
-                        <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
-                        <td class="col-1"> <button class="btn btn-info float-right edit-cars" data-toggle="modal" data-target="#editCarModal"> Edit </button> </td>
-                        <td class="col-2"> <button class="btn btn-primary car-cart-btn float-right"> Add to Cart </button> </td>
-                    </tr>`);
-      }
-    },
-  });
-}
-
-function addCar() {
-  var name = $("#addCarName").val();
-  var model = $("#addCarModel").val();
-  var used = true;
-  var price = $("#addCarPrice").val();
-  $.ajax({
-    url: "/api/cars",
-    data: { name, model, used, price },
-    method: "POST",
-    error: function (response) {
-      var cars = $("#cars");
-      cars.html("An error occoured in add new product");
-    },
-    success: function () {
-      window.location.replace("/buy");
-    },
-  });
-}
-
-function loadSpareparts() {
-  $.ajax({
-    url: "/api/spareparts",
-    method: "GET",
-    error: function (response) {
-      var spareparts = $(".spareparts");
-      spareparts.html("An error occoured");
-    },
-    success: function (response) {
-      var spareparts = $(".spareparts");
-      spareparts.empty();
-      for (var i = 0; i < response.length; i++) {
-        spareparts.append(`<tr class="text-center" data="spareparts" data-id="${
-          response[i]._id
-        }">
-                          <td>${i + 1}</td>
-                          <td>${response[i].name}</td>
-                          <td>${response[i].company}</td>
-                          <td>${response[i].model}</td>
-                          <td>${response[i].price}</td>
-                          <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
-                          <td class="col-1"> <button class="btn btn-info float-right edit-spareparts" data-toggle="modal" data-target="#editSparepartModal"> Edit </button> </td>
-                          <td class="col-2"> <button class="btn btn-primary sparepart-cart-btn float-right"> Add to Cart </button> </td>
-                      </tr>`);
-      }
-    },
-  });
-}
-
-function loadServices() {
-  $.ajax({
-    url: "/api/services",
-    method: "GET",
-    error: function (response) {
-      var services = $(".services");
-      services.html("An error occoured");
-    },
-    success: function (response) {
-      var services = $(".services");
-      services.empty();
-      for (var i = 0; i < response.length; i++) {
-        services.append(`<tr class="text-center" data="services" data-id="${
-          response[i]._id
-        }">
-                          <td>${i + 1}</td>
-                          <td>${response[i].name}</td>
-                          <td>${response[i].price}</td>
-                          <td class="col-1"> <button type="button" class="btn btn-danger del-btn float-right" data-toggle="modal" data-target="#deleteModal">Delete</button> </td>
-                          <td class="col-1"> <button class="btn btn-info float-right edit-services" data-toggle="modal" data-target="#editServiceModal"> Edit </button> </td>
-                          <td class="col-2"> <button class="btn btn-primary service-cart-btn float-right"> Add to Cart </button> </td>
-                      </tr>`);
-      }
-    },
-  });
-}
 
 function handleDelete() {
   var btn = $(this);
@@ -191,6 +53,8 @@ function handleDelete() {
     },
   });
 }
+
+
 function handleCarCart() {
   var btn = $(this);
   var parentTr = btn.closest(".text-center");
@@ -211,6 +75,26 @@ function handleSparepartCart() {
   let id = parentTr.attr("data-id");
 
   window.location.replace("/api/spareparts/cart/" + id);
+}
+
+
+function addCar() {
+  var name = $("#addCarName").val();
+  var model = $("#addCarModel").val();
+  var used = true;
+  var price = $("#addCarPrice").val();
+  $.ajax({
+    url: "/api/cars",
+    data: { name, model, used, price },
+    method: "POST",
+    error: function (response) {
+      var cars = $("#cars");
+      cars.html("An error occoured in add new product");
+    },
+    success: function () {
+      window.location.replace("/buy");
+    },
+  });
 }
 
 function editCars() {
@@ -248,6 +132,7 @@ function handleCarSave() {
   });
 }
 
+
 function editServices() {
   var btn = $(this);
   var parentTr = btn.closest(".text-center");
@@ -280,6 +165,7 @@ function handleServiceSave() {
   });
 }
 
+
 function editSpareparts() {
   var btn = $(this);
   var parentTr = btn.closest(".text-center");
@@ -294,7 +180,6 @@ function editSpareparts() {
     $("#editSparepartModal").modal("show");
   });
 }
-
 function handleSparepartSave() {
   var id = $("#editSparepartID").val();
   var name = $("#editSparepartName").val();
