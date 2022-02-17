@@ -14,7 +14,7 @@ block content
             th Price
         tbody#cars.body
           each car, index in cars
-            tr.text-center
+            tr.text-center(data-id=car._id)
               td=index+1
               td=car.name
               td=car.model
@@ -38,7 +38,7 @@ block content
             th Price
         tbody.spareparts.body
           each sparepart, index in spareparts
-            tr.text-center
+            tr.text-center(data-id=sparepart._id)
               td=index+1
               td=sparepart.name
               td=sparepart.company

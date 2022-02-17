@@ -1,6 +1,7 @@
 function err(req, res, next) {
   //set variable for every pug file
-  res.locals.errorToster = "hjjhjhjjhj";
+  res.locals.errorToster = 'hjjhjhjjhj';
+
   next();
 }
 
@@ -9,4 +10,3 @@ function err(req, res, next) {
 // exports.errorToster = errorToster;
 
 module.exports = err;
-

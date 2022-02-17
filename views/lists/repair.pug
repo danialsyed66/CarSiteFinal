@@ -12,7 +12,7 @@ block content
             th Cost
         tbody.services.body
           each service, index in services
-            tr.text-center
+            tr.text-center(data-id=service._id)
               td=index+1
               td=service.name
               td=service.price
@@ -33,7 +33,7 @@ block content
             th Price
         tbody.spareparts.body
           each sparepart, index in spareparts
-            tr.text-center
+            tr.text-center(data-id=sparepart._id)
               td=index+1
               td=sparepart.name
               td=sparepart.company

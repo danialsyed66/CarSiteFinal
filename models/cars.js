@@ -1,5 +1,5 @@
-var mongoose = require("mongoose");
-const Joi = require("@hapi/joi");
+var mongoose = require('mongoose');
+const Joi = require('@hapi/joi');
 
 var schema = mongoose.Schema({
   name: String,
@@ -8,7 +8,7 @@ var schema = mongoose.Schema({
   price: Number,
 });
 
-const Cars = mongoose.model("Cars", schema);
+const Cars = mongoose.model('Cars', schema);
 
 function validateCars(data) {
   const schema = Joi.object({
@@ -17,6 +17,7 @@ function validateCars(data) {
     used: Joi.boolean().required(),
     price: Joi.number().min(0).required(),
   });
+
   return schema.validate(data, { abortEarly: false });
 }
 

@@ -1,4 +1,5 @@
 {
-  "db": "mongodb+srv://danialsyed66:danialsyed@cluster0.zsvyw.mongodb.net/CarSite?retryWrites=true&w=majority",
+  "db1": "mongodb+srv://danialsyed66:danialsyed@cluster0.zsvyw.mongodb.net/CarSite?retryWrites=true&w=majority",
+  "db": "mongodb+srv://danialsyed66:5nnv@U3!ESdtXCz@cluster0.zsvyw.mongodb.net/CarSite?retryWrites=true&w=majority",
   "jwtPrivateKey": "SomePrivateKey"
 }
